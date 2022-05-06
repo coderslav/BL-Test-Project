@@ -1,0 +1,32 @@
+version: '3'
+
+services:
+  api:
+    build:
+      context: ./api/
+      dockerfile: ./docker/Dockerfile
+    command: "django-admin runserver 0.0.0.0:8000"
+    depends_on:
+      - postgresql
+    ports:
+      - 8000:8000
+    environment:
+      - DB_HOST=postgresql
+      - DB_NAME=main
+      - DB_PORT=5432
+      - DB_USER=postgres
+      - DB_PASSWORD=bureauxlocaux123
+      - DJANGO_SETTINGS_MODULE=api.settings
+      - PYTHONUNBUFFERED=True
+    volumes:
+      - ./api/:/api/
+
+  postgresql:
+    image: postgres:13.0
+    volumes:
+      - ./local_volumes/db/:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=main
+      - POSTGRES_PASSWORD=bureauxlocaux123
+    ports:
+      - 5432:5432
