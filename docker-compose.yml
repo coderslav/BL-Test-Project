@@ -19,6 +19,7 @@ services:
             - DB_PASSWORD=bureauxlocaux123
             - DJANGO_SETTINGS_MODULE=api.settings
             - PYTHONUNBUFFERED=True
+            - DEBUG=1
     front:
         build:
             context: ./front/
