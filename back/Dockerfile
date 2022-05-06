@@ -2,7 +2,7 @@ FROM python:3.9.0
 
 WORKDIR /app/back
 
-ADD requirements.txt /api/requirements.txt
+ADD requirements.txt /app/back/requirements.txt
 
 RUN pip install -r requirements.txt
 
