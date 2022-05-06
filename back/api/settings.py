@@ -11,17 +11,20 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 import os
+# TODO delete before final
+from dotenv import load_dotenv
 from pathlib import Path
+# TODO delete before final
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'zl@hjbtv-*n2pnq#2qqp7(61v8@cw7#y*9ziui_gt**rj=k2+o'
+SECRET_KEY = os.getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True

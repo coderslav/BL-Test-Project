@@ -1,0 +1,5 @@
+.DS_Store
+node_modules
+back_env
+.env
+__pycache__

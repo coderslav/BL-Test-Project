@@ -1,0 +1,40 @@
+version: '3.1'
+
+services:
+    back:
+        restart: always
+        build:
+            context: ./back/
+            dockerfile: ./back/Dockerfile
+        command: python manage.py makemigrations && python manage.py migrate && python manage.py runserver 0.0.0.0:8000
+        depends_on:
+            - db
+        ports:
+            - 8000:8000
+        environment:
+            - SECRET_KEY=lvp44q=(9yk1-=d)o_@h7l)o2sye0x%3k_my5dfb3+_0ru-x7t
+            - DB_HOST=postgresql
+            - DB_NAME=main
+            - DB_PORT=5432
+            - DB_USER=postgres
+            - DB_PASSWORD=bureauxlocaux123
+            - DJANGO_SETTINGS_MODULE=api.settings
+            - PYTHONUNBUFFERED=True
+    front:
+        build:
+            context: ./front/
+            dockerfile: ./front/Dockerfile
+        command: npm start
+        depends_on:
+            - back
+        ports:
+            - 3000:3000
+        stdin_open: true
+
+    db:
+        image: postgres:13.0
+        environment:
+            - POSTGRES_DB=main
+            - POSTGRES_PASSWORD=bureauxlocaux123
+        ports:
+            - 5432:5432
