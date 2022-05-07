@@ -1,2 +1,4 @@
 back_env
-api/__pycache__
+**/__pycache__
+**/migrations
+**/.git

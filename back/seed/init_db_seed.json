@@ -1,0 +1,84 @@
+[
+    {
+        "model": "api_app.transactiontype",
+        "pk": 1,
+        "fields": {
+            "title": "Rental"
+        }
+    },
+    {
+        "model": "api_app.transactiontype",
+        "pk": 2,
+        "fields": {
+            "title": "Sale"
+        }
+    },
+    {
+        "model": "api_app.realtytype",
+        "pk": 1,
+        "fields": {
+            "title": "Office"
+        }
+    },
+    {
+        "model": "api_app.realtytype",
+        "pk": 2,
+        "fields": {
+            "title": "Land plot"
+        }
+    },
+    {
+        "model": "api_app.realtytype",
+        "pk": 3,
+        "fields": {
+            "title": "Warehouse"
+        }
+    },
+    {
+        "model": "api_app.realtytype",
+        "pk": 4,
+        "fields": {
+            "title": "Retail"
+        }
+    },
+    {
+        "model": "api_app.realtytype",
+        "pk": 5,
+        "fields": {
+            "title": "Coworking"
+        }
+    },
+    {
+        "model": "api_app.realty",
+        "pk": 1,
+        "fields": {
+            "title": "Wonderful realty",
+            "address": "Wonderful house, Wonderful street, Wonderful country",
+            "transaction": 1,
+            "realty_type": 3,
+            "date": "2022-05-07T09:31:50.998Z"
+        }
+    },
+    {
+        "model": "api_app.realty",
+        "pk": 2,
+        "fields": {
+            "title": "Cool realty",
+            "address": "Cool house, Cool street, Cool country",
+            "transaction": 2,
+            "realty_type": 4,
+            "date": "2022-05-07T09:32:50.998Z"
+        }
+    },
+    {
+        "model": "api_app.realty",
+        "pk": 3,
+        "fields": {
+            "title": "Amazing realty",
+            "address": "Amazing house, Amazing street, Amazing country",
+            "transaction": 2,
+            "realty_type": 1,
+            "date": "2022-05-07T09:33:50.998Z"
+        }
+    }
+]

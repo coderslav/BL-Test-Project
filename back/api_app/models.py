@@ -2,38 +2,40 @@ from django.db import models
 
 # Create your models here.
 
+class TransactionType(models.Model):
+    title = models.CharField(
+        max_length=250,
+        verbose_name='name of transaction type'
+        )
 
+    def __str__(self):
+        return self.title
+
+class RealtyType(models.Model):
+    title = models.CharField(
+        max_length=250,
+        verbose_name='name of realty type'
+        )
+    
+    def __str__(self):
+        return self.title
+        
 class Realty(models.Model):
-    TRANSACTION_TYPE_CHOICES = [
-        ('RN', 'Rental'),
-        ('SL', 'Sale'),
-    ]
-    REALTY_TYPE_CHOICES = [
-        ('OF', 'Office'),
-        ('LP', 'Land plot'),
-        ('WH', 'Warehouse'),
-        ('RT', 'Retail'),
-        ('CW', 'Coworking')
-    ]
-
     title = models.CharField(
         max_length=250,
         verbose_name='realty name'
     )
-    address = models.CharField(
-        max_length=500,
+    address = models.TextField(
         verbose_name='realty location'
     )
-    transaction = models.CharField(
-        max_length=2,
-        choices=TRANSACTION_TYPE_CHOICES,
-        default='RN',
+    transaction = models.ForeignKey(
+        TransactionType,
+        on_delete=models.CASCADE,
         verbose_name='transaction type'
     )
-    realty_type = models.CharField(
-        max_length=2,
-        choices=REALTY_TYPE_CHOICES,
-        default='OF',
+    realty_type = models.ForeignKey(
+        RealtyType,
+        on_delete=models.CASCADE,
         verbose_name='realty type'
     )
     date = models.DateTimeField(
