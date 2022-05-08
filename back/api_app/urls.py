@@ -1,7 +1,7 @@
-from django.urls import path
 from rest_framework.routers import SimpleRouter
-from .views import UserViewSet, PostViewSet
+from .views import RealtyAPIViewSet
+
+# Using SimpleRouter for unification of requests of the list and detail realties (realties/ and realties/<int:pk>)
 router = SimpleRouter()
-router.register("users", UserViewSet, basename="users")
-router.register("", PostViewSet, basename="posts")
+router.register("realties", RealtyAPIViewSet, basename="realties")
 urlpatterns = router.urls

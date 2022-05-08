@@ -3,49 +3,63 @@
         "model": "api_app.transactiontype",
         "pk": 1,
         "fields": {
-            "title": "Rental"
+            "title": "Rental",
+            "created_at": "2022-05-04T09:30:50.998Z",
+            "updated_at": "2022-05-04T09:30:50.998Z"
         }
     },
     {
         "model": "api_app.transactiontype",
         "pk": 2,
         "fields": {
-            "title": "Sale"
+            "title": "Sale",
+            "created_at": "2022-05-04T09:30:51.998Z",
+            "updated_at": "2022-05-04T09:30:51.998Z"
         }
     },
     {
         "model": "api_app.realtytype",
         "pk": 1,
         "fields": {
-            "title": "Office"
+            "title": "Office",
+            "created_at": "2022-05-04T09:30:52.998Z",
+            "updated_at": "2022-05-04T09:30:52.998Z"
         }
     },
     {
         "model": "api_app.realtytype",
         "pk": 2,
         "fields": {
-            "title": "Land plot"
+            "title": "Land plot",
+            "created_at": "2022-05-04T09:30:53.998Z",
+            "updated_at": "2022-05-04T09:30:53.998Z"
         }
     },
     {
         "model": "api_app.realtytype",
         "pk": 3,
         "fields": {
-            "title": "Warehouse"
+            "title": "Warehouse",
+            "created_at": "2022-05-04T09:30:54.998Z",
+            "updated_at": "2022-05-04T09:30:54.998Z"
         }
     },
     {
         "model": "api_app.realtytype",
         "pk": 4,
         "fields": {
-            "title": "Retail"
+            "title": "Retail",
+            "created_at": "2022-05-04T09:30:55.998Z",
+            "updated_at": "2022-05-04T09:30:55.998Z"
         }
     },
     {
         "model": "api_app.realtytype",
         "pk": 5,
         "fields": {
-            "title": "Coworking"
+            "title": "Coworking",
+            "created_at": "2022-05-04T09:30:56.998Z",
+            "updated_at": "2022-05-04T09:30:56.998Z"
         }
     },
     {
@@ -54,9 +68,11 @@
         "fields": {
             "title": "Wonderful realty",
             "address": "Wonderful house, Wonderful street, Wonderful country",
-            "transaction": 1,
+            "transaction_type": 1,
             "realty_type": 3,
-            "date": "2022-05-07T09:31:50.998Z"
+            "pub_date": "2022-05-07T09:31:50.998Z",
+            "created_at": "2022-05-06T07:30:57.998Z",
+            "updated_at": "2022-05-06T07:30:57.998Z"
         }
     },
     {
@@ -65,9 +81,11 @@
         "fields": {
             "title": "Cool realty",
             "address": "Cool house, Cool street, Cool country",
-            "transaction": 2,
+            "transaction_type": 2,
             "realty_type": 4,
-            "date": "2022-05-07T09:32:50.998Z"
+            "pub_date": "2022-05-07T09:32:50.998Z",
+            "created_at": "2022-05-06T07:30:58.998Z",
+            "updated_at": "2022-05-06T07:30:58.998Z"
         }
     },
     {
@@ -76,9 +94,11 @@
         "fields": {
             "title": "Amazing realty",
             "address": "Amazing house, Amazing street, Amazing country",
-            "transaction": 2,
+            "transaction_type": 2,
             "realty_type": 1,
-            "date": "2022-05-07T09:33:50.998Z"
+            "pub_date": "2022-05-07T09:33:50.998Z",
+            "created_at": "2022-05-06T07:30:59.998Z",
+            "updated_at": "2022-05-06T07:30:59.998Z"
         }
     }
 ]

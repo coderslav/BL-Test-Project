@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 
 # Create your models here.
 
@@ -7,6 +8,8 @@ class TransactionType(models.Model):
         max_length=250,
         verbose_name='name of transaction type'
         )
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.title
@@ -16,6 +19,8 @@ class RealtyType(models.Model):
         max_length=250,
         verbose_name='name of realty type'
         )
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
     
     def __str__(self):
         return self.title
@@ -28,7 +33,7 @@ class Realty(models.Model):
     address = models.TextField(
         verbose_name='realty location'
     )
-    transaction = models.ForeignKey(
+    transaction_type = models.ForeignKey(
         TransactionType,
         on_delete=models.CASCADE,
         verbose_name='transaction type'
@@ -38,10 +43,12 @@ class Realty(models.Model):
         on_delete=models.CASCADE,
         verbose_name='realty type'
     )
-    date = models.DateTimeField(
-        auto_now_add=True,
+    pub_date = models.DateTimeField(
+        default=timezone.now,
         verbose_name='publication date'
     )
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.title
