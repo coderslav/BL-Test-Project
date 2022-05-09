@@ -1,7 +1,9 @@
-from rest_framework.routers import SimpleRouter
-from .views import RealtyAPIViewSet
+from django.urls import path
+from .views import RealtyAPIViewSet, RealtyCreateAPIView, RealtyUpdateAPIView
 
-# Using SimpleRouter for unification of requests of the list and detail realties (realties/ and realties/<int:pk>)
-router = SimpleRouter()
-router.register("realties", RealtyAPIViewSet, basename="realties")
-urlpatterns = router.urls
+urlpatterns = [
+    path('realties/', RealtyAPIViewSet.as_view({'get': 'list'}), name='realties-list'),
+    path('realties/<int:pk>/', RealtyAPIViewSet.as_view({'get': 'retrieve'}), name='realty-detail'),
+    path('realties/create/', RealtyCreateAPIView.as_view(), name='realty-create'),
+    path('realties/update/<int:pk>/', RealtyUpdateAPIView.as_view(), name='realty-update'),
+]
