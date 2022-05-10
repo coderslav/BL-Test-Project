@@ -4,7 +4,7 @@ from django.utils import timezone
 # Create your models here.
 class TransactionType(models.Model):
     title = models.CharField(
-        max_length=250,
+        max_length=100,
         verbose_name='name of transaction type',
         )
     created_at = models.DateTimeField(auto_now_add=True)
@@ -15,7 +15,7 @@ class TransactionType(models.Model):
 
 class RealtyType(models.Model):
     title = models.CharField(
-        max_length=250,
+        max_length=100,
         verbose_name='name of realty type',
         )
     created_at = models.DateTimeField(auto_now_add=True)
@@ -26,10 +26,11 @@ class RealtyType(models.Model):
         
 class Realty(models.Model):
     title = models.CharField(
-        max_length=250,
+        max_length=100,
         verbose_name='realty name',
     )
     address = models.TextField(
+        max_length=200,
         verbose_name='realty location'
     )
     transaction_type = models.ForeignKey(

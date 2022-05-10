@@ -1,0 +1,9 @@
+.head {
+    background-color: rgb(66, 133, 87);
+}
+.click-here:hover {
+    text-decoration: underline;
+    background-color: rgb(66, 133, 87);
+    color: white;
+    cursor: pointer;
+}

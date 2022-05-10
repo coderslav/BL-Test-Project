@@ -5,7 +5,7 @@ from .serializers import RealtySerializer
 
 class RealtyAPIViewSet(viewsets.ReadOnlyModelViewSet):
     """Using ModelViewSet to combine the logic of the ListAPIView and RetrieveAPIView"""
-    queryset = Realty.objects.all()
+    queryset = Realty.objects.all().order_by('id')
     serializer_class = RealtySerializer
 
 class RealtyCreateAPIView(generics.CreateAPIView):
@@ -13,5 +13,9 @@ class RealtyCreateAPIView(generics.CreateAPIView):
     serializer_class = RealtySerializer
 
 class RealtyUpdateAPIView(generics.UpdateAPIView):
+    queryset = Realty.objects.all()
+    serializer_class = RealtySerializer
+
+class RealtyDeleteAPIView(generics.DestroyAPIView):
     queryset = Realty.objects.all()
     serializer_class = RealtySerializer

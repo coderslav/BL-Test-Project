@@ -13,3 +13,4 @@ class RealtySerializer(serializers.ModelSerializer):
     class Meta:
         model = Realty
         fields = '__all__'
+

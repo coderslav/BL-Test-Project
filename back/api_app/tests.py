@@ -103,3 +103,9 @@ class ApiTest(TestCase):
         self.assertIn('2022-01', str(test_against.pub_date))
         self.assertEqual(test_against.transaction_type, self.transaction_type)
         self.assertEqual(test_against.realty_type, self.realty_type)
+    
+    def test_realtyAPI_delete(self):
+        response = self.client.delete(reverse('realty-delete', kwargs={'pk': self.realty_1.id}))
+        self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
+        self.assertEqual(Realty.objects.count(), 1)
+        self.assertEqual(Realty.objects.filter(title='Test realty').exists(), False)
