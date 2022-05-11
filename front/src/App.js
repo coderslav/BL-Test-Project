@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { createData, updateData, deleteData, networkErrorHandler } from './services/helpers';
+import { ascSorting, dscSorting } from './services/sorting';
 import { getRealties } from './services/APIconsumers';
 import Table from './components/Table';
 import DetailsCreateEdit from './components/DetailsCreateEdit';
@@ -8,6 +9,10 @@ import Alert from './components/Alert';
 function App() {
     const [realtiesList, setRealtiesList] = useState([]);
     const [selectedRealty, setSelectedRealty] = useState(null);
+    const [order, setOrder] = useState({
+        type: '',
+        by: '',
+    });
     const [switcher, setSwitcher] = useState({
         table: true,
         details: false,
@@ -68,12 +73,31 @@ function App() {
         });
     };
 
+    const sortingHandler = (col) => {
+        let sorted;
+        if (order.type === 'ASC' || !order.type) {
+            sorted = ascSorting(col, realtiesList);
+            setRealtiesList(sorted);
+            setOrder({
+                type: 'DSC',
+                by: col,
+            });
+        } else if (order.type === 'DSC') {
+            sorted = dscSorting(col, realtiesList);
+            setRealtiesList(sorted);
+            setOrder({
+                type: 'ASC',
+                by: col,
+            });
+        }
+    };
+
     return (
         <>
             {alertPopUp.on && <Alert alertPopUp={alertPopUp} />}
             <div className='container d-flex align-items-center justify-content-center pt-3'>
                 {switcher.details && <DetailsCreateEdit selectedRealty={selectedRealty} createHandler={createHandler} updateHandler={updateHandler} deleteHandler={deleteHandler} backButtonHandler={backButtonHandler} />}
-                {switcher.table && <Table realtiesList={realtiesList} clickDetailsHandler={clickDetailsHandler} createButtonHandler={createButtonHandler} />}
+                {switcher.table && <Table realtiesList={realtiesList} order={order} clickDetailsHandler={clickDetailsHandler} createButtonHandler={createButtonHandler} sortingHandler={sortingHandler} />}
             </div>
         </>
     );

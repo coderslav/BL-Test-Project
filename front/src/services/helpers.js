@@ -34,8 +34,15 @@ export const getISOlocalDateTime = (dateTimeNow) => {
 
 export const parseDateTime = (dateTimeToParse) => {
     const splitted = dateTimeToParse.split('T');
-    const newDate = splitted[0].split('-').reverse().join('-');
-    return `${newDate}, ${splitted[1]}:00`;
+    const newDateTime = splitted[0].split('-').reverse().join('-');
+    return `${newDateTime}, ${splitted[1]}:00`;
+};
+
+export const parseDateTimeForSorting = (dateTimeToParse) => {
+    const splitted = dateTimeToParse.split(', ');
+    const reversed = splitted[0].split('-').reverse().join('');
+    const dateTimeForSorting = parseInt(reversed + splitted[1].replaceAll(':', ''));
+    return dateTimeForSorting;
 };
 
 export const parseForm = (form, action, previousData) => {

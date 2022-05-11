@@ -1,7 +1,7 @@
 import React from 'react';
 import './Table.css';
 
-export default function Table({ realtiesList, clickDetailsHandler, createButtonHandler }) {
+export default function Table({ realtiesList, order, clickDetailsHandler, createButtonHandler, sortingHandler }) {
     return (
         <section className='p-5'>
             <h1 className='pb-2 text-center'>REALTIES</h1>
@@ -9,11 +9,36 @@ export default function Table({ realtiesList, clickDetailsHandler, createButtonH
                 <table className='table bg-white'>
                     <thead className='head text-light'>
                         <tr>
-                            <th scope='col'>Title</th>
-                            <th scope='col'>Address</th>
-                            <th scope='col'>Transaction type</th>
-                            <th scope='col'>Realty type</th>
-                            <th scope='col'>Publication date</th>
+                            <th scope='col' className='table-header' onClick={() => sortingHandler('title')}>
+                                Title
+                                <span style={{ width: '0.5rem', display: 'inline-block' }}>
+                                    <i className={order.by === 'title' ? (order.type === 'ASC' ? 'bi bi-arrow-up-short' : 'bi bi-arrow-down-short') : ''} />
+                                </span>
+                            </th>
+                            <th scope='col' className='table-header' onClick={() => sortingHandler('address')}>
+                                Address
+                                <span style={{ width: '0.5rem', display: 'inline-block' }}>
+                                    <i className={order.by === 'address' ? (order.type === 'ASC' ? 'bi bi-arrow-up-short' : 'bi bi-arrow-down-short') : ''} />
+                                </span>
+                            </th>
+                            <th scope='col' className='table-header' onClick={() => sortingHandler('transaction_type')}>
+                                Transaction type
+                                <span style={{ width: '0.5rem', display: 'inline-block' }}>
+                                    <i className={order.by === 'transaction_type' ? (order.type === 'ASC' ? 'bi bi-arrow-up-short' : 'bi bi-arrow-down-short') : ''} />
+                                </span>
+                            </th>
+                            <th scope='col' className='table-header' onClick={() => sortingHandler('realty_type')}>
+                                Realty type
+                                <span style={{ width: '0.5rem', display: 'inline-block' }}>
+                                    <i className={order.by === 'realty_type' ? (order.type === 'ASC' ? 'bi bi-arrow-up-short' : 'bi bi-arrow-down-short') : ''} />
+                                </span>
+                            </th>
+                            <th scope='col' className='table-header' onClick={() => sortingHandler('pub_date')}>
+                                Publication date
+                                <span style={{ width: '0.5rem', display: 'inline-block' }}>
+                                    <i className={order.by === 'pub_date' ? (order.type === 'ASC' ? 'bi bi-arrow-up-short' : 'bi bi-arrow-down-short') : ''} />
+                                </span>
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
