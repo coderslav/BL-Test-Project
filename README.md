@@ -21,4 +21,4 @@
 
 -   I had to replace the Django library **psycopg2-binary 2.8.6** that was in the mission specs (*requirements.txt*) with a newer one **psycopg2-binary 2.9.3**. Reason: incompatibility and numerous errors during server startup
 -   The description of the mission is in the adjacent file called *MISSION.md*
--   The project also includes Backend tests. To execute them, go to the CLI of the launched Backend container and run the following command: ```python manage.py test```
+-   The project also includes Backend tests. To execute them, go to the CLI of the launched Docker Backend Container and run the following command: ```python manage.py test```
