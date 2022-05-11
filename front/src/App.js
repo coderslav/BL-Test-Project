@@ -75,7 +75,7 @@ function App() {
 
     const sortingHandler = (col) => {
         let sorted;
-        if (order.type === 'ASC' || !order.type) {
+        if (order.type === 'ASC' || !order.type || order.by !== col) {
             sorted = ascSorting(col, realtiesList);
             setRealtiesList(sorted);
             setOrder({
