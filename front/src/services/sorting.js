@@ -1,3 +1,6 @@
+/*
+Sorting logic in ascending and descending order
+*/
 import { parseDateTimeForSorting } from './helpers';
 
 export const ascSorting = (col, data) => {

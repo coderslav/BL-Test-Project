@@ -1,57 +1,22 @@
-This readme walks you through the process of setting up and completing the bureauxlocaux mini-project.
-This project uses some of the same technologies that we use on our production stack.
-The goal is to get you familiar with this tech, find out if you like it and if you have the basic know-how required to perform your job as a fullstack developer.
+### Project launch guide
 
-### Setup
+> Before you start, make sure that you have Docker installed ( [Docker](https://www.docker.com/) ). And run it
 
-Use [Create React App](https://github.com/facebook/create-react-app) to bootstrap a new app.
+-   Clone this project to your computer
+-   Use the terminal to go to the root folder (BL_TEST_PROJECT) of the project. In this folder there should be a file called docker-compose.yml
+-   Run the command: docker-compose build
+-   The build process takes some time. Please wait
+-   After the build is completed, enter the following command: docker-compose up
+-   Congratulations! The project has been launched
 
-Put the contents into a front folder to separate them from the backend code.
+### Project usage guide
 
-The backend environment already provided in the "back" folder: it specifies the basic configuration including the django project, docker files and python requirements.
+-   Open your browser and follow the link http://127.0.0.1:3000 or http://localhost:3000
+-   To use sorting, just click on the header of the column you want to sort (sorting works in descending and ascending order)
+-   For realty details, click on the title of the realty that you are interested in
+-   The rest of the usage should be intuitive. Enjoy :)
 
-If you're going to use git, set it up in the directory containing both back and front.
+### Notes
 
-If you don't have it yet, you will have to install [docker](https://www.docker.com/) and create containers corresponding to the api and the database.
-
-### The task 
-
-The task itself is quite simple.
-As you may know, bureauxlocaux.com is a website hosting real estate listings.
-The objective is to create a simple app with a list and detail view of real estate listings.
-
-The list view should be a table and have the following structure:
-
-| Title        | Address           | Transaction type  | Realty type | Publication date |
-| ------------ | ----------------- | ----------------- | ----------- | ---------------- |
-
-The transaction type might be either a rental or a sale.
-The realty type might be one of: office, land plot, warehouse, retail or coworking.
-
-By clicking on the title, the user will be redirected to the detail view.
-The also needs to be a button below the table for adding a new listing.
-
-So, the detail view will allow to either create of edit an existing listing.
-All of the fields have to be editable.
-There are no other structural or style constraints.
-
-### Bonus tasks
-- tests
-- list view: filtering and sorting
-
-### Code constraints
-- In react, you may only use functional components and hooks (no classes) -> [doc](https://reactjs.org/docs/hooks-intro.html)
-- The django backend will only be used as an api -> [doc](https://www.django-rest-framework.org/)
-- Style: use flexbox and make sure the app can be displayed correctly on mobile as well.
-
-### Tips
-This tutorial might be useful https://www.valentinog.com/blog/drf/
-
-### Evaluation criteria
-- functionnality and conformity to specifications
-- code quality
-- style
-
-### Output format
-Upon finishing the task you may zip the project and send it back via email
-or host the project online (ex. GitHub) and give us access.
+-   I had to replace the Django library "psycopg2-binary 2.8.6" that was in the mission specs with a newer one "psycopg2-binary 2.9.3". Reason: Incompatibility and numerous errors during server startup
+-   The description of the mission is in the adjacent file called "MISSION.md"

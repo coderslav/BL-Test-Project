@@ -1,5 +1,9 @@
+/*
+Useful functions
+*/
 import { createRealty, updateRealty, deleteRealty } from './APIconsumers';
 
+// Popup disappearance logic
 export const disablePopUp = (seAlertPopUp) => {
     setTimeout(() => {
         seAlertPopUp({
@@ -14,6 +18,7 @@ export const disablePopUp = (seAlertPopUp) => {
     }, 5000);
 };
 
+// Network error Pop Up handler
 export const networkErrorHandler = (setAlertPopUp, res) => {
     setAlertPopUp({
         on: true,
@@ -27,17 +32,20 @@ export const networkErrorHandler = (setAlertPopUp, res) => {
     disablePopUp(setAlertPopUp);
 };
 
+// Creating local client time without seconds in ISO format (YYYY-MM-DDTHH:mm)
 export const getISOlocalDateTime = (dateTimeNow) => {
     const ISOlocalDateTime = dateTimeNow.getFullYear() + '-' + ('0' + (dateTimeNow.getMonth() + 1)).slice(-2) + '-' + ('0' + dateTimeNow.getDate()).slice(-2) + 'T' + ('0' + dateTimeNow.getHours()).slice(-2) + ':' + ('0' + dateTimeNow.getMinutes()).slice(-2);
     return ISOlocalDateTime;
 };
 
+// Parsing date and time into human readable format
 export const parseDateTime = (dateTimeToParse) => {
     const splitted = dateTimeToParse.split('T');
     const newDateTime = splitted[0].split('-').reverse().join('-');
     return `${newDateTime}, ${splitted[1]}:00`;
 };
 
+// Parsing date and time for sorting logic
 export const parseDateTimeForSorting = (dateTimeToParse) => {
     const splitted = dateTimeToParse.split(', ');
     const reversed = splitted[0].split('-').reverse().join('');
@@ -45,6 +53,7 @@ export const parseDateTimeForSorting = (dateTimeToParse) => {
     return dateTimeForSorting;
 };
 
+// Turning a HTML form data into an object
 export const parseForm = (form, action, previousData) => {
     const dataToParse = new FormData(form);
     const parsedData = {};
@@ -72,6 +81,7 @@ export const parseForm = (form, action, previousData) => {
     }
 };
 
+// Logic of creating new Realty with a call to the Backend
 export const createData = (e, setSwitcher, setAlertPopUp) => {
     const newRealtyData = parseForm(e.currentTarget, 'create');
     createRealty(newRealtyData).then((res) => {
@@ -96,6 +106,7 @@ export const createData = (e, setSwitcher, setAlertPopUp) => {
     });
 };
 
+// Logic of updating existing Realty with a call to the Backend
 export const updateData = (realtiesList, e, setSwitcher, setAlertPopUp) => {
     const id = parseInt(e.currentTarget.id);
     const previousRealty = realtiesList.find((realty) => realty.id === id);
@@ -136,6 +147,7 @@ export const updateData = (realtiesList, e, setSwitcher, setAlertPopUp) => {
     }
 };
 
+// Logic of deleting Realty with a call to the Backend
 export const deleteData = (id, setSwitcher, setAlertPopUp) => {
     deleteRealty(id).then((res) => {
         if (res.status === 204) {
@@ -159,6 +171,7 @@ export const deleteData = (id, setSwitcher, setAlertPopUp) => {
     });
 };
 
+// Background color determination of Pop Up
 export const alertHandler = (alertState) => {
     if (alertState.updated || alertState.created || alertState.deleted) {
         return 'alert alert-success text-center position-absolute';
