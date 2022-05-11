@@ -8,6 +8,7 @@ import Alert from './components/Alert';
 
 function App() {
     const [realtiesList, setRealtiesList] = useState([]);
+    const [needLoader, setNeedLoader] = useState(true);
     const [selectedRealty, setSelectedRealty] = useState(null);
     const [order, setOrder] = useState({
         type: '',
@@ -31,6 +32,7 @@ function App() {
         getRealties().then((res) => {
             if (res.status === 200) {
                 setRealtiesList(res.data);
+                setNeedLoader(false);
             } else {
                 networkErrorHandler(setAlertPopUp, res);
             }
@@ -56,6 +58,10 @@ function App() {
             table: false,
             details: true,
         });
+        setOrder({
+            type: '',
+            by: '',
+        });
     };
 
     const backButtonHandler = () => {
@@ -70,6 +76,10 @@ function App() {
         setSwitcher({
             table: false,
             details: true,
+        });
+        setOrder({
+            type: '',
+            by: '',
         });
     };
 
@@ -97,7 +107,7 @@ function App() {
             {alertPopUp.on && <Alert alertPopUp={alertPopUp} />}
             <div className='container d-flex align-items-center justify-content-center pt-3'>
                 {switcher.details && <DetailsCreateEdit selectedRealty={selectedRealty} createHandler={createHandler} updateHandler={updateHandler} deleteHandler={deleteHandler} backButtonHandler={backButtonHandler} />}
-                {switcher.table && <Table realtiesList={realtiesList} order={order} clickDetailsHandler={clickDetailsHandler} createButtonHandler={createButtonHandler} sortingHandler={sortingHandler} />}
+                {switcher.table && <Table realtiesList={realtiesList} order={order} clickDetailsHandler={clickDetailsHandler} createButtonHandler={createButtonHandler} sortingHandler={sortingHandler} needLoader={needLoader} alertPopUp={alertPopUp} />}
             </div>
         </>
     );

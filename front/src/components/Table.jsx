@@ -1,7 +1,7 @@
 import React from 'react';
 import './Table.css';
 
-export default function Table({ realtiesList, order, clickDetailsHandler, createButtonHandler, sortingHandler }) {
+export default function Table({ realtiesList, order, clickDetailsHandler, createButtonHandler, sortingHandler, needLoader, alertPopUp }) {
     return (
         <section className='p-5'>
             <h1 className='pb-2 text-center'>REALTIES</h1>
@@ -54,8 +54,22 @@ export default function Table({ realtiesList, order, clickDetailsHandler, create
                                     <td>{realty.pub_date}</td>
                                 </tr>
                             ))
+                        ) : needLoader || alertPopUp.error ? (
+                            <tr>
+                                <td>Loading...</td>
+                                <td>Loading...</td>
+                                <td>Loading...</td>
+                                <td>Loading...</td>
+                                <td>Loading...</td>
+                            </tr>
                         ) : (
-                            <tr></tr>
+                            <tr>
+                                <td>No more data</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
                         )}
                     </tbody>
                 </table>
